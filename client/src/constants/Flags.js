@@ -14,8 +14,15 @@ const Flags = {
   startFollowingWord: new Rox.RoxString('Follow', ['Follow', 'Start Following', 'Watch Him'])
 };
 
+const options = {
+  configurationFetchedHandler : configurationFetchedHandler
+};
+
+const configurationFetchedHandler = fetcherResults => {
+  console.log(fetcherResults);
+};
+
 async function initRollout() {
-  const options = {}
   // Register the flags with Rollout
   Rox.register('', Flags);
   // Setup the Rollout key
@@ -23,6 +30,7 @@ async function initRollout() {
 }
 
 initRollout().then(function() {
+  console.log('coucou ' + fetcherResults);
   console.log('Done loading Rollout');
 });
 
@@ -30,6 +38,7 @@ Rox.setCustomStringProperty('plan', () => UserRepo.getUser().plan);
 Rox.setCustomStringProperty('email', () => UserRepo.getUser().email);
 Rox.setCustomNumberProperty('playlist_count', () => UserRepo.getUser().playlistCount);
 Rox.setCustomStringProperty('soundcloud_id', () => UserRepo.getUser().id);
+Rox.setCustomStringProperty('customer_email', () => UserRepo.getUser().id);
+Rox.setCustomStringProperty('region', () => UserRepo.getUser().id);
 
-//;
 export default Flags;

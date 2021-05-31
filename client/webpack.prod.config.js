@@ -37,7 +37,7 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.(js|jsx)$/,
         loaders: ['babel-loader'],
@@ -52,7 +52,7 @@ module.exports = {
             {
               loader: 'postcss-loader',
               options: {
-                plugins: () => [autoprefixer({ browsers: ['> 1%', 'IE >= 10'] })],
+                plugins: () => [autoprefixer()],
               },
             },
             { loader: 'sass-loader' },
