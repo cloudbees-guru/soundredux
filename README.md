@@ -1,2 +1,5 @@
+# Install the application
 npm install
-npm run install
+
+# Start SoundRedux
+npm start
