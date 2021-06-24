@@ -1,7 +1,7 @@
 // import rox-browser from npm
 
 import Rox from 'rox-browser'
-import UserRepo from  '../store/UserRepo'
+import UserRepo from '../store/UserRepo'
 
 // define an exported object that contains the flags
 const Flags = {
@@ -15,22 +15,24 @@ const Flags = {
 };
 
 const options = {
-  configurationFetchedHandler : configurationFetchedHandler
+  configurationFetchedHandler: configurationFetchedHandler
 };
 
 const configurationFetchedHandler = fetcherResults => {
   console.log(fetcherResults);
+  if (fetcherResults.hasChanges && fetcherResults.fetcherStatus === 'APPLIED_FROM_NETWORK') {
+    window.location.reload(false)
+  }
 };
 
 async function initRollout() {
   // Register the flags with Rollout
   Rox.register('', Flags);
   // Setup the Rollout key
-  await Rox.setup('5ea2b2fcc5d49a44579da526', options);
+  await Rox.setup('<REPLACE ME WITH ENVIRONMENT KEY>', options);
 }
 
-initRollout().then(function() {
-  console.log('coucou ' + fetcherResults);
+initRollout().then(function () {
   console.log('Done loading Rollout');
 });
 
