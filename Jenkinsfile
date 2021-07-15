@@ -4,9 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Hello world'
-                container ('maven') {
-                    sh 'mvn --version'
-                }
+                sh 'mvn --version'
             }
         }
     }
