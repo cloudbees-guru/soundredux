@@ -2,10 +2,10 @@ pipeline {
     agent any
     stages {
         stage('Build') {
-            agent { docker { image 'maven:3.8.1-jdk-11' } }
+            agent { docker { image 'node:14' } }
             steps {
-                echo 'Hello world'
-                sh 'mvn --version'
+                sh 'npm i -g node-gyp'
+                sh 'npm install'
             }
         }
     }
